@@ -12,9 +12,9 @@ provider "proxmox" {
   pm_tls_insecure = "true"
 }
 
-resource "proxmox_vm_qemu" "first_test_server" {
+resource "proxmox_vm_qemu" "plex_server" {
   count = 1
-  name = "foobar"
+  name = "plex01"
   target_node = "pve"
   onboot = true
   define_connection_info = true
