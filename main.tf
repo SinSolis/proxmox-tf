@@ -26,6 +26,7 @@ resource "proxmox_vm_qemu" "plex_server" {
   memory = 2048
   scsihw = "virtio-scsi-pci"
   
+  #/dev/sda
   disk {
     slot = 0
     size = "50G"
@@ -33,9 +34,26 @@ resource "proxmox_vm_qemu" "plex_server" {
     storage = "primary-datastore"
   }
 
+  #/dev/sdb
   disk {
     slot = 1
-    size = "2000G"
+    size = "1000G"
+    type = "scsi"
+    storage = "primary-datastore"
+  }
+
+  #/dev/sdc
+  disk {
+    slot = 2
+    size = "1000G"
+    type = "scsi"
+    storage = "primary-datastore"
+  }
+
+  #/dev/sdd
+  disk {
+    slot = 3
+    size = "1000G"
     type = "scsi"
     storage = "primary-datastore"
   }
