@@ -12,9 +12,10 @@ provider "proxmox" {
   pm_tls_insecure = "true"
 }
 
-resource "proxmox_vm_qemu" "plex_server" {
+resource "proxmox_vm_qemu" "lab01" {
   count = 1
-  name = "plex01"
+  name = "lab01"
+  os_type = "cloud-init"
   target_node = "pve"
   onboot = true
   agent = 1
@@ -33,30 +34,6 @@ resource "proxmox_vm_qemu" "plex_server" {
   disk {
     slot = 0
     size = "50G"
-    type = "scsi"
-    storage = "primary-datastore"
-  }
-
-  #/dev/sdb
-  disk {
-    slot = 1
-    size = "1000G"
-    type = "scsi"
-    storage = "primary-datastore"
-  }
-
-  #/dev/sdc
-  disk {
-    slot = 2
-    size = "1000G"
-    type = "scsi"
-    storage = "primary-datastore"
-  }
-
-  #/dev/sdd
-  disk {
-    slot = 3
-    size = "1000G"
     type = "scsi"
     storage = "primary-datastore"
   }
